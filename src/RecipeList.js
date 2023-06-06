@@ -4,11 +4,11 @@ function RecipeList ({ recipes, handleDelete }) {
   const recipeCards = recipes.map((recipe, i) => {
     return (
       <tr key={i}>
-        <td>{recipe.name}</td>
-        <td>{recipe.cuisine}</td>
+        <td><p>{recipe.name}</p></td>
+        <td><p>{recipe.cuisine}</p></td>
         <td><img src={recipe.photo} /></td>
-        <td>{recipe.ingredients}</td>
-        <td>{recipe.preparation}</td>
+        <td className="ingredients"><p>{recipe.ingredients}</p></td>
+        <td className="preparation"><p>{recipe.preparation}</p></td>
         <td><button name="delete" onClick={() => {handleDelete(i)}}>Delete</button></td>
       </tr>
     )
@@ -22,7 +22,7 @@ function RecipeList ({ recipes, handleDelete }) {
             <th>Cuisine</th>
             <th>Photo</th>
             <th>Ingredients</th>
-            <th>preparation</th>
+            <th>Preparation</th>
             <th>Actions</th>
           </tr>
         </thead>
