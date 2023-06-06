@@ -25,13 +25,6 @@ function RecipeCreate ({recipes, setRecipes}) {
       <table>
         <tbody>
           <tr>
-            <th>Name</th>
-            <th>Cuisine</th>
-            <th>Photo</th>
-            <th>Ingredients</th>
-            <th>Preparation</th>
-          </tr>
-          <tr>
             <td><input name="name" type="text" placeholder="Name" onChange={handleChange} value={formData.name}/></td>
             <td><input name="cuisine" type="text" placeholder="Cuisine" onChange={handleChange} value={formData.cuisine}/></td>
             <td><input name="photo" type="url" placeholder="URL" onChange={handleChange} value={formData.photo}/></td>
