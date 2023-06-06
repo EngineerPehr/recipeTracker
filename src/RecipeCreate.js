@@ -2,20 +2,41 @@ import React, { useState } from "react";
 
 function RecipeCreate ({recipes, setRecipes}) {
   const initialFormData = {
-    apple: 1
+    name: '',
+    cuisine: '',
+    photo: '',
+    ingredients: '',
+    preparation: '',
   }
-  const [content, setContent] = useState(initialFormData)
-  console.log(content)
+  const [formData, setFormData] = useState(initialFormData)
+  const handleChange = ({target}) => {
+    setFormData({...formData, [target.name]: target.value})
+  }
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const newRecipe = {...formData}
+    setRecipes([...recipes, newRecipe])
+    setFormData(initialFormData)
+  }
   // TODO: When the form is submitted, a new recipe should be created, and the form contents cleared.
-  // TODO: Add the required input and textarea form elements.
-  // TODO: Add the required submit and change handlers
   
   return (
-    <form name="create">
+    <form name="create" onSubmit={handleSubmit}>
       <table>
         <tbody>
           <tr>
-            <td></td>
+            <th>Name</th>
+            <th>Cuisine</th>
+            <th>Photo</th>
+            <th>Ingredients</th>
+            <th>Preparation</th>
+          </tr>
+          <tr>
+            <td><input name="name" type="text" placeholder="Name" onChange={handleChange} value={formData.name}/></td>
+            <td><input name="cuisine" type="text" placeholder="Cuisine" onChange={handleChange} value={formData.cuisine}/></td>
+            <td><input name="photo" type="url" placeholder="URL" onChange={handleChange} value={formData.photo}/></td>
+            <td><textarea name="ingredients" onChange={handleChange} value={formData.ingredients} placeholder="Ingredients"></textarea></td>
+            <td><textarea name="preparation" onChange={handleChange} value={formData.preparation} placeholder="Preparation"></textarea></td>
             <td>
               <button type="submit">Create</button>
             </td>
